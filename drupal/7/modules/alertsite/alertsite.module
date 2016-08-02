@@ -1,0 +1,110 @@
+<?php
+
+/**
+ * @file
+ * Alertsite Monitoring
+ * Author: PDS
+ */
+
+/**
+ * Defaults
+ */ 
+define('ALERTSITE_BASE_URL', 'https://www.alertsite.com/restapi/');
+define('ALERTSITE_RESPONSE_START', '<Response>');
+define('ALERTSITE_ERROR', '<p>Status Not Available!</p>');
+define('ALERTSITE_ICON_PATH', drupal_get_path('module', 'alertsite') . '/icons/');
+define('ALERTSITE_CONTENT_TYPE', 'Content-Type: text/xml');
+define('ALERTSITE_USER_AGENT', 'User-Agent: AlertSite REST Client/1.0');
+define('ALERTSITE_ADMIN_CONFIG_PATH', 'admin/config/system/alertsite');
+
+/**
+ * Implements hook_help().
+ */
+function alertsite_help($path, $arg) {
+  switch ($path) {
+    case ALERTSITE_ADMIN_CONFIG_PATH: {
+      $output = array();
+      
+      $output[] = '<dl>';
+      $output[] = '<dt>' . t('Alertsite Device Monitoring requires an active subscription to <a href="@alertsite_url">Alertsite</a>.', array('@alertsite_url' => 'http://www.alertsite.com')) . '</dt>';
+      $output[] = '<dt>' . t('This module requires <a href="@curl_url">cURL</a> to be installed on your server.', array('@curl_url' => 'http://php.net/manual/en/book.curl.php')) . '</dt>';
+      $output[] = '</dl>';
+      
+      return implode(PHP_EOL, $output);
+    }
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */ 
+function alertsite_menu() {
+  $items[ALERTSITE_ADMIN_CONFIG_PATH] = array(
+    'title' => 'Alertsite API',
+    'description' => 'Alertsite API settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('alertsite_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'alertsite.admin.inc',
+    'file path' => drupal_get_path('module', 'alertsite'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['system-status'] = array(
+    'title' => t('System Status'),
+    'page callback' => 'alertsite_status_list',
+    'access callback' => TRUE
+  );
+  
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function alertsite_block_info() {
+  
+  $blocks['alertsite_status_list'] = array(
+    'info' => t('Alertsite Device Status List'),
+    'status' => FALSE,
+    'weight' => 0,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function alertsite_block_view($delta = '') {
+  switch($delta) {  
+    case 'alertsite_status_list': {
+      $block['subject'] = t('Status List');
+      $block['content'] = alertsite_status_list();
+      return $block;
+      break;	
+    }
+  }
+}
+
+/**
+ * Callback function to display device status info
+ */
+function alertsite_status_list() {
+  $alertsite = new Alertsite();
+  
+  /* Get API credentials from $conf */
+  $username = variable_get('alertsite_api_username');
+  $password = variable_get('alertsite_api_password');
+  
+  /* Login */
+  $session_id = $alertsite->getSessionId($username, $password);
+  
+  /* Get device status content */
+  $device_status_content = $alertsite->getDevices($session_id, $username);
+
+  /* Logout */
+  $alertsite->logout();
+
+  return $device_status_content;
+}

@@ -1,0 +1,45 @@
+table.alertsite td {
+	padding: 5px;
+}
+
+table.alertsite td.device {
+	font-weight: bold;
+	background-color: #EFEFEF;
+}
+
+table.alertsite td.status {
+	padding-left: 20px;
+}
+
+table.alertsite td.location {
+	width: 100%;
+}
+
+.block-alertsite h2.block-title {
+	display: none;
+}
+
+#block-alertsite-alertsite-twitter-feed {
+	background-color: transparent;
+	border: 0 none;
+}
+
+#block-alertsite-alertsite-twitter-feed .content {
+	padding: 0;
+}
+
+iframe.twitter-timeline.twitter-timeline-rendered {
+	width: 440px;
+}
+
+
+body.section-system-status-list #main #content {
+    margin-right: -560px;
+    width: 540px;
+}
+
+body.section-system-status-list #main .region-sidebar-second {
+    margin-left: 525px;
+    margin-right: -775px;
+    width: 450px;
+}

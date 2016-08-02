@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Alertsite module.
+ */
+
+/**
+ * Implements hook_uninstall()
+ */
+function alertsite_uninstall() {
+  variable_del('alertsite_api_username');
+  variable_del('alertsite_api_username');
+}

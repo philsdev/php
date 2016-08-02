@@ -1,0 +1,8 @@
+name = AlertSite
+description = "Alertsite Device Monitoring"
+package = Monitoring
+configure = admin/config/system/alertsite
+core = 7.x
+stylesheets[all][] = alertsite.css
+files[] = alertsite.api.inc
+php = 5.2
