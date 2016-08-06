@@ -1,0 +1,40 @@
+body { font-family: "Courier New", courier, sans serif; font-size: 10pt; color: #000000; background-color: white; margin: 0; }
+
+#header { padding: 10px; background-color: #333; color: #fff; font-size: 140%; font-weight: bold; }
+
+#nav { width: 300px; float: left; background-color: #eee; min-height: 1200px; }
+#nav ul { margin: 0; padding: 0; }
+#nav li { list-style: none; background-color: #cccccc; padding: 10px; border-top: 1px solid #fff; border-right: 1px solid #000; border-bottom: 1px solid #000; }
+#nav li:hover { background-color: #333; }
+#nav li a { color: #C71F2A; font-size: 120%; text-decoration: none; font-weight: bold; }
+#nav li:hover  a { color: #fff; }
+#nav li.active { background-color: #999; }
+#nav li.active a { color: #900; }
+
+#nav span { display: block; text-align: center; padding: 10px 0; }
+
+#body { padding: 20px; margin-left: 300px; }
+
+h1, h2, h3, h4 { margin-top: 0; }
+
+pre { border: 1px solid #000; background-color: #FFFFDD; padding: 10px; }
+
+table tr th { background-color: #DDDDDD; padding: 5px; }
+table tr td { background-color: #EEEEEE; padding: 5px; }
+table tr:hover td { background-color: #FFFF99; }
+
+table.vert tr th { background-color: #DDD; font-weight: bold; text-align: left; }
+
+a { color: #C71F2A; text-decoration: underline; cursor: pointer; }
+
+input[type=text], input[type=password], select { width: 250px; }
+textarea { width: 80%; height: 400px; }
+input[type=text], input[type=password], select, textarea { border: 1px solid #000; padding: 2px; }
+
+button { border: 2px outset #666666; background-color: #666666; color: white; padding: 2px 15px; font-family: "Courier New", courier, sans serif; font-size: 120%; font-weight: bold; }
+button:hover { background-color: #000; }
+button.delete { background-color: #990000; }
+button.delete:hover { background-color: #FF0000; }
+
+table.form { margin-bottom: 40px; }
+table.form th { text-align: left; }
