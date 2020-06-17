@@ -10,5 +10,5 @@
  */
 function alertsite_uninstall() {
   variable_del('alertsite_api_username');
-  variable_del('alertsite_api_username');
+  variable_del('alertsite_api_password');
 }
