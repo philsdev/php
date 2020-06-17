@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Field Bulk Updater
+ */
+
+/**
+ * Defaults
+ */
+define('FIELD_BULK_UPDATE_BASE_URL', 'admin/structure/field_bulk_update');
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function field_bulk_update_menu() {
+
+  $items[FIELD_BULK_UPDATE_BASE_URL] = array(
+    'title' => 'Field Bulk Updater',
+    'description' => 'Field Bulk Updater',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('field_bulk_update_form', 4),
+    'access arguments' => array('administer site configuration'),
+    'position' => 'left',
+    'weight' => 99,
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'field_bulk_update.admin.inc'
+  );
+  
+  return $items;
+}

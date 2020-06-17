@@ -1,0 +1,10 @@
+name = Field Bulk Updater
+description = "Update node field values in bulk"
+package = Fields
+core = 7.x
+stylesheets[all][] = field_bulk_update.css
+scripts[] = field_bulk_update.js
+dependencies[] = field
+dependencies[] = ctools
+files[] = field_bulk_update.module
+php = 5.2
