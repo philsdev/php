@@ -1,0 +1,14 @@
+#rfi-jetsenseform #programs_selector {
+	width: 65%;
+	float: left;
+}
+
+#rfi-jetsenseform #subjects_selector {
+	width: 30%;
+	float: right;
+}
+
+
+#rfi-jetsenseform.rfi-full-form .form-item label {
+	width: auto;
+}

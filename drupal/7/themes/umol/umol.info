@@ -1,0 +1,31 @@
+name        = UMOL
+description = UMassOnline - Responsive Drupal 7 Theme
+screenshot  = screenshot.png
+
+core        = 7.x
+engine      = phptemplate
+
+stylesheets[all][] = style.css
+stylesheets[all][] = css/jquery.ui.autocomplete.css
+stylesheets[all][] = js/fancybox/jquery.fancybox-1.3.1.css
+
+scripts[] = js/jquery-ui-1.8.min.js
+scripts[] = js/autocomplete.umol.js
+scripts[] = js/fancybox/jquery.fancybox-1.3.1.pack.js
+scripts[] = js/umol.js
+
+regions[search]             = Search
+regions[navigation]         = Navigation
+regions[content]            = Content
+regions[content_sidebar]    = Content Sidebar
+regions[hero]               = Hero
+regions[splash]             = Splash
+regions[first_white]        = First White
+regions[first_grey]         = First Grey
+regions[second_white]       = Second White
+regions[second_grey]        = Second Grey
+regions[third_white]        = Third White
+regions[third_grey]         = Third Grey
+regions[menu]               = Menu Blue
+regions[footer]             = Footer
+regions[help]               = Help
