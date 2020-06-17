@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Provide item-level clearing of items in Varnish cache
+ */
+
+/**
+ * Defaults
+ */
+define('VACHE_ADMIN_VARNISH_ROOT', 'admin/config/development/varnish/');
+define('VACHE_ADMIN_SESSION_BASE', 'vache_admin_results');
+
+/**
+ * Implementation of hook_menu().
+ */
+function vache_menu() {
+  $items = array();
+  
+  $items[VACHE_ADMIN_VARNISH_ROOT . 'vache'] = array(
+    'title' => 'Clear Individual Items',
+    'description' => 'Clear individual items from Varnish cache',
+    'type' => MENU_LOCAL_ACTION,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('vache_admin_cache_form'),
+    'access arguments' => array('administer varnish'),
+    'file' => 'vache.admin.inc'
+  );
+  
+  return $items;
+}

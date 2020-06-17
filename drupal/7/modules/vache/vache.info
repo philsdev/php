@@ -1,0 +1,8 @@
+name = Vache
+description = "Cache Item Clearing from Varnish"
+package = Caching
+core = 7.x
+dependencies[] = varnish
+files[] = vache.module
+files[] = vache.admin.inc
+php = 5.2
