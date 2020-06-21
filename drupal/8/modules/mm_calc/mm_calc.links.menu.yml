@@ -1,0 +1,6 @@
+mm_calc.admin:
+  title: 'Calculator Settings'
+  parent: system.admin_config_system
+  description: 'Default values used in calculators'
+  route_name: mm_calc.admin.settings
+  weight: -1

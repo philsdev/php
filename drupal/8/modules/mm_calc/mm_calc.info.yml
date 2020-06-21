@@ -1,0 +1,7 @@
+name: Mortgage Calculators
+type: module
+description: 'Miller Home Lending: Mortgage Calculators'
+configure: mm_calc.admin.settings
+package: MM
+version: 1.0
+core: '8.x'

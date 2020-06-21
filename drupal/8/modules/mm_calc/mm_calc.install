@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the MM Mortgage Calculator module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function mm_calc_install() {
+  $defaults = [
+    'loan_amount' => 300000,
+    'interest_rate' => 4,
+    'length' => 30,
+    'monthly_payment' => 1500,
+    'months_paid' => 60,
+    'home_value' => 500000,
+    'annual_taxes' => 3000,
+    'annual_insurance' => 1000,
+    'annual_pmi' => 0.5,
+  ];
+
+  \Drupal::service('config.factory')
+    ->getEditable('mm_calc.settings')
+    ->set('calculators', $defaults)
+    ->save();
+}
