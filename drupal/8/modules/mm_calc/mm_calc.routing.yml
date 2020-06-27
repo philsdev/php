@@ -6,27 +6,10 @@ mm_calc.calculator:
   requirements:
     _access: 'TRUE'
 
-mm_calc.calculator.payment:
-  path: /calculator/payment
+mm_calc.calculator.form:
+  path: /calculator/{stub}
   defaults:
-    _title: 'How much will my mortgage payment be?'
-    _controller: '\Drupal\mm_calc\Controller\MMCalcController::calculator_payment'
-  requirements:
-    _access: 'TRUE'
-
-mm_calc.calculator.principal:
-  path: /calculator/principal
-  defaults:
-    _title: 'Mortgage principal calculator'
-    _controller: '\Drupal\mm_calc\Controller\MMCalcController::calculator_principal'
-  requirements:
-    _access: 'TRUE'
-
-mm_calc.calculator.length:
-  path: /calculator/length
-  defaults:
-    _title: 'Mortgage length calculator'
-    _controller: '\Drupal\mm_calc\Controller\MMCalcController::calculator_length'
+    _controller: '\Drupal\mm_calc\Controller\MMCalcController::calculator_form'
   requirements:
     _access: 'TRUE'
 
