@@ -5,3 +5,5 @@ configure: mm_calc.admin.settings
 package: MM
 version: 1.0
 core: '8.x'
+dependencies:
+  - block

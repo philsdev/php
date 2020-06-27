@@ -7,7 +7,7 @@ class Calc {
 	const COMPOUND_PERIODS = 12;
 	const LTV_MIN_PMI = 0.8;
 
-	static function getLtv($loan_amount, $home_value) {
+	public static function getLtv($loan_amount, $home_value) {
 		if ($home_value > 0) {
 			return ($loan_amount / $home_value);
 		} else {
@@ -15,7 +15,7 @@ class Calc {
 		}
 	}
 
-	static function isPmiRequired($ltv) {
+	public static function isPmiRequired($ltv) {
 		if ($ltv > self::LTV_MIN_PMI) {
 			return true;
 		} else {
@@ -23,11 +23,11 @@ class Calc {
 		}
 	}
 
-	static function getMonths($years) {
+	public static function getMonths($years) {
 		return $years * 12;
 	}
 
-	static function getTimeIntervalParts($length) {
+	public static function getTimeIntervalParts($length) {
 		$years  = floor($length);
 		$m = $length - $years;
 
@@ -48,7 +48,7 @@ class Calc {
 		];
 	}
 
-	static function getTimeIntervalDisplay($years=0, $months=0) {
+	public static function getTimeIntervalDisplay($years=0, $months=0) {
 		$display = [];
 
 		if ($years > 0) {
@@ -80,7 +80,7 @@ class Calc {
 		return implode(", ", $display);
 	}
 
-	static function PeriodPayment($amount, $interest, $length, $annualPayments = 12, $annualCompounds = 0) {
+	public static function PeriodPayment($amount, $interest, $length, $annualPayments = 12, $annualCompounds = 0) {
 		
 		if ($annualCompounds == 0) {
 			$annualCompounds = self::COMPOUND_PERIODS;
@@ -97,7 +97,7 @@ class Calc {
     	return $amount * ($interest / (1 - pow(( 1 + $interest ), -$annualPayments * $length) ) );
 	}
 	
-	static function LoanAmount($periodPayment, $interest, $length, $annualPayments = 12, $annualCompounds = 0) {
+	public static function LoanAmount($periodPayment, $interest, $length, $annualPayments = 12, $annualCompounds = 0) {
 		
 		if ($annualCompounds == 0) {
 			$annualCompounds = self::COMPOUND_PERIODS;
@@ -115,7 +115,7 @@ class Calc {
     	return $periodPayment * (pow(1 + $interest, $N) - 1) / ($interest * pow(1 + $interest, $N));
 	}
 
-	static function LoanLength($amount, $interest, $periodPayment, $annualPayments = 12, $annualCompounds = 0) {
+	public static function LoanLength($amount, $interest, $periodPayment, $annualPayments = 12, $annualCompounds = 0) {
 		
 		if ($annualCompounds == 0) {
 			$annualCompounds = self::COMPOUND_PERIODS;
@@ -126,9 +126,8 @@ class Calc {
 	    
 		return - (1 / $annualPayments ) * ( log ( 1 - (($amount * $interest) / ($periodPayment*$annualPayments)) ) / log ( 1+$interest/$annualPayments ) ); 
 	}
-
 	
-	static function BuildAmortizationTable($homevalue, $amount, $interest, $length, $options = null) {
+	public static function BuildAmortizationTable($homevalue, $amount, $interest, $length, $options = null) {
 
 		if ($options == null) {
 			$options = new AmortizationOptions();
@@ -381,7 +380,7 @@ class Calc {
 		return $values;
 	}
 	
-	function ConsolidateTables($table1, $table2) {
+	public static function ConsolidateTables($table1, $table2) {
 		//$table1 = new AmortizationTable();
 		//$table2 = new AmortizationTable();
 		
@@ -402,8 +401,8 @@ class Calc {
 		$periodsWithPMI = 0;
 		$currentPeriod = 1;
 		$i = 0;
-		for($i = 0; $i < $periods; $i++)
-		{
+		
+		for($i = 0; $i < $periods; $i++) {
 			$period = new AmortizationPeriod();
 
 			$period->Type   =  $table1->Schedule[$i]->Type;
@@ -501,8 +500,7 @@ class Calc {
 		return $returnTable;
 	}
 
-	function ActualAPR($amount, $closingCost, $interest, $length, $periodPayment)
-	{
+	public static function ActualAPR($amount, $closingCost, $interest, $length, $periodPayment) {
 		if ($amount <= 0) {
 			return 0;
 		}
@@ -544,4 +542,5 @@ class Calc {
 		
 		return $aprX;
 	}
+
 }

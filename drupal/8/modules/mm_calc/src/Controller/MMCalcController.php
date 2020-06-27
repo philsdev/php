@@ -44,7 +44,7 @@ class MMCalcController extends ControllerBase {
 		return implode(chr(92), $path);
 	}
 
-	public function calculator() {
+	public function getCalculatorNav() {
 		$links = self::getCalculatorLinks();
 
 		$item_list = [];
@@ -60,6 +60,10 @@ class MMCalcController extends ControllerBase {
 			'#items' => $items,
 			'#list_type' => 'ul',
 		);
+	}
+
+	public function calculator() {
+		return self::getCalculatorNav();
 	}
 
 	public function calculator_form($stub) {
@@ -89,4 +93,5 @@ class MMCalcController extends ControllerBase {
 			);
 		}
 	}
+	
 }
